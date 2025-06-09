@@ -2,6 +2,26 @@
 
 A Streamlit-based health tracking application that helps users monitor their daily health metrics while providing real-time weather data to encourage outdoor activities.
 
+## Target Users
+
+This application is specifically designed for:
+
+- Health-conscious individuals aged 18-65
+- People who combine indoor and outdoor exercise routines
+- Users who want to track daily health metrics
+- Individuals who need weather-based activity recommendations
+- Users with varying accessibility needs
+
+## Application Goals
+
+1. **Primary Goal**: Help users maintain healthy lifestyle habits by combining health tracking with weather-aware activity recommendations
+2. **Specific Objectives**:
+   - Provide easy daily health metric tracking
+   - Offer real-time weather-based exercise recommendations
+   - Visualize health progress over time
+   - Support informed decision-making about outdoor activities
+   - Ensure accessibility for all users
+
 ## Demo Video
 
 Watch our demo on how to use the app:
@@ -136,3 +156,137 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - OpenStreetMap for location services
 - Streamlit for the amazing framework
 - All contributors and users of the app
+
+## Data Sources and Integration
+
+The application integrates multiple data sources:
+
+### External APIs
+
+1. **National Weather Service API**
+
+   - Real-time weather data
+   - Detailed forecasts
+   - Location-based weather conditions
+   - Format: JSON responses
+   - Endpoint: api.weather.gov
+
+2. **OpenStreetMap Nominatim API**
+   - Geocoding services
+   - Location data
+   - Format: JSON responses
+   - Endpoint: nominatim.openstreetmap.org
+
+### Internal Data Management
+
+1. **Health Metrics Dataset**
+
+   - Structure: Pandas DataFrame
+   - Stored metrics:
+     - Water intake (liters)
+     - Calories consumed
+     - Exercise minutes
+   - Format: In-memory data structure
+   - Persistence: Session-based storage
+
+2. **Location Data**
+   - City and state information
+   - Cached coordinates
+   - Format: JSON structure
+   - Updates: Real-time API integration
+
+## Streamlit Elements Implementation
+
+The application utilizes a wide range of Streamlit components:
+
+### Input Elements
+
+- `st.number_input`: For water, calories, and exercise inputs
+- `st.text_input`: For location entry
+- `st.slider`: For historical data range selection
+- `st.checkbox`: For enabling/disabling features
+- `st.selectbox`: For theme selection
+- `st.button`: For form submissions and updates
+
+### Display Elements
+
+- `st.metric`: For weather temperature display
+- `st.line_chart`: For exercise tracking visualization
+- `st.area_chart`: For water intake visualization
+- `st.bar_chart`: For calorie tracking
+- `st.map`: For displaying nearby locations
+- `st.dataframe`: For showing historical data
+
+### Layout Elements
+
+- `st.columns`: For responsive layout
+- `st.sidebar`: For settings and controls
+- `st.expander`: For collapsible sections
+- `st.header`: For section headers
+- `st.subheader`: For subsection headers
+
+### Feedback Elements
+
+- `st.success`: For success messages
+- `st.error`: For error notifications
+- `st.warning`: For warning messages
+- `st.info`: For informational alerts
+- `st.spinner`: For loading states
+
+### State Management
+
+- `st.session_state`: For preserving data between reruns
+- `st.rerun`: For forcing page updates
+
+### Styling Elements
+
+- Custom CSS via `st.markdown`
+- Dark/Light theme support
+- Responsive design elements
+
+## Application Structure and Flow
+
+### Core Components
+
+```
+app/
+├── main.py              # Main application entry point
+├── requirements.txt     # Project dependencies
+├── README.md           # Documentation
+└── utils/
+    ├── weather.py      # Weather API integration
+    ├── health.py       # Health metrics management
+    └── visualization.py # Data visualization tools
+```
+
+### User Flow
+
+1. **Initial Setup**
+
+   - User enters location
+   - App fetches weather data
+   - Session state initialized
+
+2. **Daily Tracking**
+
+   - Input health metrics
+   - View real-time weather
+   - Get activity recommendations
+
+3. **Data Visualization**
+
+   - View progress charts
+   - Analyze historical data
+   - Track achievements
+
+4. **Settings Management**
+   - Theme preferences
+   - Location updates
+   - Data management
+
+### Error Handling
+
+- API failure recovery
+- Input validation
+- Data persistence backup
+- Graceful degradation
